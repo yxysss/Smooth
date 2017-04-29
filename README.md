@@ -1,6 +1,6 @@
 # Smooth
 
-Android文件下载器，支持断点续传，支持
+Android文件下载器，支持断点续传，支持多线程下载。
 
 使用前，把java文件夹下的library.smooth包拷贝到项目中的java文件夹下即可使用，上面给出的小demo实现了下载apk后自动更新安装。
 
@@ -15,7 +15,7 @@ onerrorListener, onFinishListener onfinishListener)方法添加下载地址，�
 调用SmoothLoader.getSmoothLoad(this).getCacheDir()方法获取默认的下载目录。
 调用SmoothLoader.getSmoothLoad(this).getCacheDir(String url)方法获取下载完成后的最终文件。
 下载完成的文件以"over+前缀+源文件名"的形式命名保存在下载目录中。
-未下载完成的文件的文件名前没有"over"
+未下载完成的文件的文件名前没有"over"。
 
 简单示例：
 
