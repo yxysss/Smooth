@@ -22,8 +22,8 @@
         </activity>
         <service android:name=".DownloadService">
             <intent-filter>
-                <action android:name="android.intent.action.downloadservice" />
-                <category android:name="android.intent.category.service" />
+                <action android:name="com.yproject.action.downloadservice" />
+                <category android:name="com.yproject.category.service" />
             </intent-filter>
         </service>
     </application>

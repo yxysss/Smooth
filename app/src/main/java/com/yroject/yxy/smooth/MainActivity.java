@@ -49,12 +49,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        smoothLoader = SmoothLoader.getSmoothLoader(this);
-        Log.d("MainThread", "MainThread" + " : " + getTaskId());
         bindService(new Intent(this, DownloadService.class), connection, BIND_AUTO_CREATE);
-        // tasklayout = (LinearLayout) findViewById(R.id.tasklayout);
-        IntentFilter intentFilter = new IntentFilter();
-        Intent intent = new Intent();
         start = (Button) findViewById(R.id.start);
         start.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,29 +58,10 @@ public class MainActivity extends AppCompatActivity {
                 downloadBinder.download();
             }
         });
-        pause = (Button) findViewById(R.id.pause);
-        pause.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //smoothLoader.pauseThread();
-                smoothLoader.addDownloadTask("http://192.168.1.102/QQ.apk", new onStartListener() {
-                    @Override
-                    public void onStart() {
-                        Toast.makeText(MainActivity.this, "2号任务下载开始", Toast.LENGTH_LONG).show();
-                    }
-                }, new onErrorListener() {
-                    @Override
-                    public void onError() {
-                        Toast.makeText(MainActivity.this, "2号任务下载失败", Toast.LENGTH_LONG).show();
-                    }
-                }, new onFinishedListener() {
-                    @Override
-                    public void onFinished() {
-                        Toast.makeText(MainActivity.this, "2号任务下载完成", Toast.LENGTH_LONG).show();
-                    }
-                });
-            }
-        });
-        smoothLoader.getCacheDir();
+    }
+
+    protected void onDestroy() {
+        super.onDestroy();
+        unbindService(connection);
     }
 }
