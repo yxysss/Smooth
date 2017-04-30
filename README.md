@@ -8,13 +8,12 @@ Android文件下载器，支持断点续传，支持多线程下载。
 
 调用SmoothLoader.getSmoothLoader(this)方法获取SmoothLoader实例。注意，一个应用只会获得一个SmoothLoader实例，在service,activity或者application的onCreate方法中注册，在onDestroy方法中调用SmoothLoader.cancel方法取消注册。
 
+<<<<<<< HEAD
 调用SmoothLoader.getSmoothLoad(this).addDownloadTask(String url, onStartListener onstartListener, onErrorListener
 
 onerrorListener, onFinishListener onfinishListener)方法添加下载地址，下载任务开始前的操作，下载任务出错的操作，下载任务结束的操作。
 
 onerrorListener.onError(int Errorcode) 参数Errorcode = 0, 代表下载中断， Errorcode = 1, 代表下载正在进行中, Errorcode = 2, 代表下载任务的url无效。
-
-调用SmoothLoader.getSmoothLoad(this).getCacheDir()方法获取默认的下载目录。 调用SmoothLoader.getSmoothLoad(this).getCacheDir(String url)方法获取下载完成后的最终文件。 下载完成的文件以"over+前缀+源文件名"的形式命名保存在下载目录中。 未下载完成的文件的文件名前没有"over"。
 
 简单示例：
 
