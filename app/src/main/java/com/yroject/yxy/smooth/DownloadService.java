@@ -32,8 +32,10 @@ public class DownloadService extends Service {
                 }
             }, new onErrorListener() {
                 @Override
-                public void onError() {
-                    Toast.makeText(DownloadService.this, "1号任务下载失败", Toast.LENGTH_LONG).show();
+                public void onError(int Errorcode) {
+                    if (Errorcode == 0) Toast.makeText(DownloadService.this, "1号任务下载失败", Toast.LENGTH_LONG).show();
+                    if (Errorcode == 1) Toast.makeText(DownloadService.this, "1号任务正在下载", Toast.LENGTH_LONG).show();
+                    if (Errorcode == 2) Toast.makeText(DownloadService.this, "1号任务的URL无效", Toast.LENGTH_LONG).show();
                 }
             }, new onFinishedListener() {
                 @Override
@@ -69,6 +71,7 @@ public class DownloadService extends Service {
 
     public void onDestroy() {
         super.onDestroy();
+        SmoothLoader.cancel();
     }
 
 }

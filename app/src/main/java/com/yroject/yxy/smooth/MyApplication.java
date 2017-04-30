@@ -1,6 +1,7 @@
 package com.yroject.yxy.smooth;
 
 import android.app.Application;
+import android.content.Context;
 import android.os.Bundle;
 import com.squareup.leakcanary.LeakCanary;
 
@@ -13,4 +14,9 @@ public class MyApplication extends Application {
         super.onCreate();
         LeakCanary.install(this);
     }
+
+    public static Context getContext() {
+        return getContext();
+    }
+
 }

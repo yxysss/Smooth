@@ -5,5 +5,5 @@ package library.smooth;
  */
 public interface onErrorListener {
 
-    public void onError();
+    public void onError(int Errorcode);
 }

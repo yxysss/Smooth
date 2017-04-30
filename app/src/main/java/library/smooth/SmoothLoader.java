@@ -71,7 +71,7 @@ public class SmoothLoader {
                 // Toast.makeText(context, "文件下载中断", Toast.LENGTH_LONG).show();
                 onErrorListener onErrorListener = errorListenerHashMap.get(filename);
                 if (onErrorListener != null) {
-                    onErrorListener.onError();
+                    onErrorListener.onError(0);
                 }
             }
         }
@@ -102,7 +102,7 @@ public class SmoothLoader {
             e.printStackTrace();
         }
         if (url == null) {
-            Toast.makeText(context, "URL无效", Toast.LENGTH_LONG).show();
+            onErrorListener.onError(2);
             return ;
         }
         if (!file.exists()) {
@@ -143,7 +143,7 @@ public class SmoothLoader {
 
             } else {
                 // 文件正在被下载
-                Toast.makeText(context, "文件正在被下载", Toast.LENGTH_LONG).show();
+                onErrorListener.onError(1);
             }
         }
     }
@@ -205,6 +205,12 @@ public class SmoothLoader {
 
     public String getCacheDir() {
         return getCacheDir("");
+    }
+
+    public static void cancel() {
+        context = null;
+        smoothLoader = null;
+        service = null;
     }
 
 }
